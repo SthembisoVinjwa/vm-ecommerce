@@ -1,9 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../models/users')
 
-router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: "home is here"
+router.post('/signup', (req, res, next) => {
+
+    User.find({ email: req.body.email })
+    .then(users => {
+        if (users.length == 0) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        })
     })
 })
 
