@@ -24,6 +24,19 @@ exports.users_get_all = (req, res, next) => {
     })
 }
 
+exports.users_get = (req, res, next) => {
+  User.findById(req.userData.userId)
+    .select('-__v -password')
+    .then(user => {
+      res.status(200).json(user)
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      })
+    })
+}
+
 exports.users_delete = (req, res, next) => {
   User.findByIdAndDelete(req.userData.userId)
     .then(result => {
