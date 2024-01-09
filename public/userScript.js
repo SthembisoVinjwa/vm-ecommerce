@@ -20,7 +20,7 @@ function showSignIn () {
   signup.style.display = 'none'
 }
 
-function getCredentials() {
+function getCredentials () {
   let email = document.getElementById('email').value
   let password = document.getElementById('password').value
 
@@ -40,20 +40,20 @@ function signIn (email, password) {
       password: password
     })
   })
-  .then(response => {
-    status = response.status
-    response.json().then(data => {
-      if (status === 200) {
-        setCookie('access_token', data.token, 30)
-        window.location.assign('/')
-      } else {
-        alert(data.message)
-      }
+    .then(response => {
+      status = response.status
+      response.json().then(data => {
+        if (status === 200) {
+          setCookie('access_token', data.token, 30)
+          window.location.assign('/')
+        } else {
+          alert(data.message)
+        }
+      })
     })
-  })
-  .catch(err => {
-    alert(err)
-  })
+    .catch(err => {
+      alert(err)
+    })
 }
 
 function signUp () {
@@ -62,22 +62,36 @@ function signUp () {
   let password = document.getElementById('password-signup').value
   let confirm = document.getElementById('confirm-signup').value
 
-  let form = new FormData()
-
-  form.append('name', name)
-  form.append('email', email)
-  form.append('password', password)
-
   if (password === confirm) {
-    return true
+    fetch(server_url + 'users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password
+      })
+    })
+    .then(response => {
+      signIn(email, password)
+    })
+    .catch(err => {
+      alert(err)
+    })
+  } else {
+    alert('Password do not match')
   }
-
-  return false
 }
 
-function setCookie(cName, cValue, expDays) {
-  let date = new Date();
-  date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + date.toUTCString();
-  document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+function updateUser() {
+  console.log("update")
+}
+
+function setCookie (cName, cValue, expDays) {
+  let date = new Date()
+  date.setTime(date.getTime() + expDays * 24 * 60 * 60 * 1000)
+  const expires = 'expires=' + date.toUTCString()
+  document.cookie = cName + '=' + cValue + '; ' + expires + '; path=/'
 }

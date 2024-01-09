@@ -12,7 +12,7 @@
     <main>
         <div class="container">
             <h2>Sign In</h2>
-            <form id="signin" onsubmit="event.preventDefault(); getCredentials()" method="post">
+            <form id="signin" onsubmit="event.preventDefault(); getCredentials()">
                 <input type="email" placeholder="Email" id="email" required>
                 <input type="password" placeholder="Password" id="password" required>
                 <div id="forgot">
@@ -26,7 +26,7 @@
                             id="signup-tag">Sign up</a></p>
                 </div>
             </form>
-            <form id="signup" style="display: none;">
+            <form id="signup" style="display: none;" onsubmit="event.preventDefault(); signUp()">
                 <input type="text" placeholder="Full name" id="name-signup" required>
                 <input type="email" placeholder="Email" id="email-signup" required>
                 <input type="password" placeholder="Password" id="password-signup" required>
@@ -42,7 +42,7 @@
     </main>
 
     <script>
-        var server_url = '<%- url %>'
+        let server_url = '<%- url %>'
     </script>
 
     <script src="/userScript.js"></script>

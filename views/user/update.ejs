@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Shop</title>
+    <link rel="stylesheet" href="/userStyle.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h2>Update Details</h2>
+            <form id="signup" onsubmit="event.preventDefault(); updateUser()">
+                <input type="text" placeholder="Full name" id="name-signup">
+                <input type="email" placeholder="Email" id="email-update" >
+                <input type="button" value="Change password" class="update">
+                <input type="submit" value="Update" class="submit">
+            </form>
+        </div>
+    </main>
+
+    <script>
+        let server_url = '<%- url %>'
+        let access_token = document.cookie.split('=')[1]
+
+        fetch(server_url + 'users/this', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': 'Bearer ' + access_token
+            }
+        })
+        .then(response => {
+            response.json().then(data => {
+                let name = document.getElementById("name-signup")
+                let email = document.getElementById("email-update")
+
+                name.value = data.name
+                email.value = data.email
+            })
+        })
+        .catch(err => {
+            alert(err)
+        })
+
+    </script>
+
+    <script src="/userScript.js"></script>
+</body>
+
+</html>
