@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/app/user', (req, res, next) => {
-    res.render('user/auth')
+    res.render('user/auth', { url: process.env.SERVER_URL})
 })
 
 module.exports = router

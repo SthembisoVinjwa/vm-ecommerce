@@ -20,16 +20,40 @@ function showSignIn () {
   signup.style.display = 'none'
 }
 
-function signIn () {
+function getCredentials() {
   let email = document.getElementById('email').value
   let password = document.getElementById('password').value
 
-  let form = new FormData()
+  signIn(email, password)
+}
 
-  form.append('email', email)
-  form.append('password', password)
+function signIn (email, password) {
+  let status = 404
 
-  return true
+  fetch(server_url + 'users/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  })
+  .then(response => {
+    status = response.status
+    response.json().then(data => {
+      if (status === 200) {
+        setCookie('access_token', data.token, 30)
+        window.location.assign('/')
+      } else {
+        alert(data.message)
+      }
+    })
+  })
+  .catch(err => {
+    alert(err)
+  })
 }
 
 function signUp () {
@@ -49,4 +73,11 @@ function signUp () {
   }
 
   return false
+}
+
+function setCookie(cName, cValue, expDays) {
+  let date = new Date();
+  date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
 }
