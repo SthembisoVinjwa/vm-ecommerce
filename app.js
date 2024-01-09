@@ -12,13 +12,23 @@ mongoose.connect(
     '@cluster0.rqavnth.mongodb.net/?retryWrites=true&w=majority'
 )
 
+const path = require('path')
+
+// Set view engine and static folder
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, '/views'))
+app.use(express.static(path.join(__dirname, '/public')))
+
 const usersRouter = require('./routes/users')
+const renderRouter = require('./routes/render')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
 app.use(morgan('tiny'))
+
+app.use('/', renderRouter)
 
 app.use('/users', usersRouter)
 

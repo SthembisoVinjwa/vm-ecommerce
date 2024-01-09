@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Shop</title>
+    <link rel="stylesheet" href="userStyle.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h2>Sign In</h2>
+            <form id="signin" onsubmit="event.preventDefault(); signIn()" method="post">
+                <input type="email" placeholder="Email" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <div id="forgot">
+                    <div id="rememberContainer"><input type="checkbox" id="remember" value="remember"><label> Remember
+                            Me</label></div>
+                    <p>Forgot password? <a href="#" id="forgot-tag">Click here</a></p>
+                </div>
+                <input type="submit" value="Login" class="submit">
+                <div class="already">
+                    <p>Don't have an account? <a href="#" onclick="event.preventDefault(); showSignUp()"
+                            id="signup-tag">Sign up</a></p>
+                </div>
+            </form>
+            <form id="signup" style="display: none;">
+                <input type="text" placeholder="Full name" id="name-signup" required>
+                <input type="email" placeholder="Email" id="email-signup" required>
+                <input type="password" placeholder="Password" id="password-signup" required>
+                <input type="password" placeholder="Confirm Password" id="confirm-signup" required>
+                <input type="submit" value="Sign Up" class="submit">
+                <div class="already">
+                    <p>Already have an account? <a href="#" onclick="event.preventDefault(); showSignIn()"
+                            id="signin-tag">Sign
+                            In</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="userScript.js"></script>
+</body>
+
+</html>

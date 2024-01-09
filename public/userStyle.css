@@ -1,0 +1,134 @@
+:root {
+    --bg-color-main: white;
+    --bg-color-secondary: gray;
+    --fg-color-main: forestgreen;
+    --font-color: #121212;
+    --radius-boxes: 5px;
+    --radius-button: 30px;
+    --shadow-color: rgba(0, 0, 0, 0.22);
+    --dropshadow: 6px 5px 20px 1px var(--shadow-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: medium;
+    color: var(--font-color)
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color-main);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 600px;
+    background-color: var(--bg-color-main);
+    margin: 30px 0px;
+    border-radius: 30px;
+    box-shadow: var(--dropshadow);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/******* Container Responsiveness ********/
+
+@media(max-width: 1100px) {
+    .container {
+        width: 45%;
+    }
+}
+
+@media(max-width: 900px) {
+    .container {
+        width: 55%;
+    }
+}
+
+@media(max-width: 750px) {
+    .container {
+        width: 75%;
+    }
+}
+
+@media(max-width: 550px) {
+    .container {
+        width: 95%;
+    }
+}
+
+/*************************************/
+
+.container h2 {
+    font-size: 32px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+#email,
+#email-signup,
+#name-signup {
+    margin-bottom: 30px;
+    height: 30px;
+}
+
+.submit {
+    width: 60%;
+    height: 40px;
+    border: solid 2px var(--fg-color-main);
+    background: var(--fg-color-main);
+    color: white;
+    border-radius: 30px 30px;
+    margin: 0px auto;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+#password,
+#password-signup,
+#confirm-signup {
+    height: 30px;
+}
+
+#password {
+    margin-bottom: 20px;
+}
+
+#password-signup {
+    margin-bottom: 30px;
+}
+
+#forgot {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.already {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#signup-tag,
+#signin-tag,
+#forgot-tag {
+    text-decoration: none;
+    color: var(--fg-color-main);
+    font-weight: bold;
+}
