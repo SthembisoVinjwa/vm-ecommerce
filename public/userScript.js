@@ -85,6 +85,10 @@ function signUp () {
   }
 }
 
+function forgotPassword() {
+  window.location.assign('/app/user/forgot')
+}
+
 function updateUser () {
   let newName = document.getElementById('name-signup').value
   let newEmail = document.getElementById('email-update').value

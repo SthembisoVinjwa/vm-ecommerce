@@ -11,6 +11,8 @@ router.delete('/', checkAuth, usersController.users_delete)
 
 router.patch('/', checkAuth, usersController.users_update)
 
+router.post('/reset', checkAuth, usersController.users_forgot)
+
 router.post('/signup', usersController.users_signup)
 
 router.post('/signin', usersController.users_signin)

@@ -2,6 +2,7 @@ const User = require('../models/users')
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
 
 exports.users_get_all = (req, res, next) => {
   User.find()
@@ -72,6 +73,48 @@ async function ops (req) {
   }
 
   return updateOps
+}
+
+exports.users_forgot = async function (req, res) {
+  try {
+    const user_email = req.userData.email
+    const user = await User.findOne({ email: user_email })
+
+    if (!user) {
+      return res.status(400).json({ message: 'Sorry Email does not Exist!' })
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: '587',
+      auth: {
+        user: 'vinjwacr7@gmail.com',
+        pass: process.env.MAIL_PW
+      },
+      secureConnection: 'false',
+      tls: {
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false
+      }
+    })
+    const mailOptions = {
+      from: 'vinjwacr7@gmail.com',
+      to: 'vinjwacr7@gmail.com',
+      subject: 'Please Reset your Password',
+      html: `<h3>Dear User</h3>
+        <p>You have requested to reset your password. To reset your password successfully, follow the link below to reset it</p>
+        <p>Click <a href="${process.env.SERVER_URL}app/user/forgot">${process.env.SERVER_URL}app/user/forgot</a></p>
+        <p>Regards,</p><p>VM ecommerce</p>`
+    };    
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) throw error
+      return res.status(200).json({ error: false, data: info, message: 'OK' })
+    })
+  } catch (err) {
+    res.status(500).json({ message: err })
+  }
 }
 
 exports.users_update = (req, res, next) => {
