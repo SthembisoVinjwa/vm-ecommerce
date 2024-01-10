@@ -28,7 +28,7 @@ app.use(cors())
 
 app.use(morgan('tiny'))
 
-app.use('/', renderRouter)
+app.use('/app', renderRouter)
 
 app.use('/users', usersRouter)
 
