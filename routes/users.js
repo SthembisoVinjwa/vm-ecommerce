@@ -7,7 +7,7 @@ router.get('/', usersController.users_get_all)
 
 router.get('/this', checkAuth, usersController.users_get)
 
-router.delete('/', checkAuth, usersController.users_delete)
+router.delete('/', usersController.users_delete)
 
 router.patch('/', checkAuth, usersController.users_update)
 

@@ -116,13 +116,24 @@ main {
 }
 
 #password,
+#password-update,
 #password-signup,
+#confirm-update,
 #confirm-signup {
     height: 30px;
 }
 
 #password {
     margin-bottom: 20px;
+}
+
+#confirm-update {
+    margin-top: 30px;
+}
+
+#password-update {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 #password-signup {

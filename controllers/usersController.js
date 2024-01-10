@@ -12,7 +12,8 @@ exports.users_get_all = (req, res, next) => {
           return {
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            hash: user.password
           }
         })
       })
@@ -57,25 +58,42 @@ exports.users_delete = (req, res, next) => {
     })
 }
 
-exports.users_update = (req, res, next) => {
-  const updateOps = {}
+async function ops (req) {
+  let updateOps = {}
 
   for (let i = 0; i < req.body.length; i++) {
     const op = req.body[i]
-    updateOps[op.propName] = op.propValue
+
+    if (op.propName === 'password') {
+      updateOps[op.propName] = await bcrypt.hash(op.propValue, 10)
+    } else {
+      updateOps[op.propName] = op.propValue
+    }
   }
 
-  User.findByIdAndUpdate(
-    req.userData.userId,
-    { $set: updateOps },
-    { new: true }
-  )
-    .select('-__v')
-    .then(user => {
-      res.status(200).json({
-        message: 'User credentials updated successfully',
-        user: user
-      })
+  return updateOps
+}
+
+exports.users_update = (req, res, next) => {
+  ops(req)
+    .then(updateOps => {
+      User.findByIdAndUpdate(
+        req.userData.userId,
+        { $set: updateOps },
+        { new: true }
+      )
+        .select('-__v')
+        .then(user => {
+          res.status(200).json({
+            message: 'User credentials updated successfully',
+            user: user
+          })
+        })
+        .catch(err => {
+          res.status(500).json({
+            error: err
+          })
+        })
     })
     .catch(err => {
       res.status(500).json({

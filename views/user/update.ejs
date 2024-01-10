@@ -15,8 +15,11 @@
             <form id="signup" onsubmit="event.preventDefault(); updateUser()">
                 <input type="text" placeholder="Full name" id="name-signup">
                 <input type="email" placeholder="Email" id="email-update" disabled>
+                <input style="display: none;" type="password" placeholder="Old Password" id="password-update" required>
+                <input style="display: none;" type="password" placeholder="New Password" id="confirm-signup" required>
+                <input style="display: none;" type="password" placeholder="Confirm New Password" id="confirm-update" required>
                 <input type="button" value="Change password" class="update"
-                    onclick="event.preventDefault(); resetPassword()">
+                    onclick="event.preventDefault(); newPassword()">
                 <input type="submit" value="Update" class="submit">
             </form>
         </div>

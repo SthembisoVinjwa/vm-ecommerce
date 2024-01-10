@@ -120,8 +120,14 @@ function updateUser () {
   }
 }
 
-function resetPassword() {
-  alert('Link to reset password has been sent to your email.')
+function newPassword() {
+  let oldPass = document.getElementById("password-update")
+  let newPass = document.getElementById("confirm-signup")
+  let confirmPass = document.getElementById("confirm-update")
+
+  oldPass.style.display = "flex"
+  newPass.style.display = "flex"
+  confirmPass.style.display = "flex"
 }
 
 function setCookie (cName, cValue, expDays) {
