@@ -74,19 +74,54 @@ function signUp () {
         password: password
       })
     })
-    .then(response => {
-      signIn(email, password)
-    })
-    .catch(err => {
-      alert(err)
-    })
+      .then(response => {
+        signIn(email, password)
+      })
+      .catch(err => {
+        alert(err)
+      })
   } else {
     alert('Password do not match')
   }
 }
 
-function updateUser() {
-  console.log("update")
+function updateUser () {
+  let newName = document.getElementById('name-signup').value
+  let newEmail = document.getElementById('email-update').value
+
+  let access_token = document.cookie.split('=')[1]
+
+  if (currentName !== newName || currentEmail !== newEmail) {
+    fetch(server_url + 'users/', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        token: 'Bearer ' + access_token
+      },
+      body: JSON.stringify([
+        {
+          propName: 'name',
+          propValue: newName
+        },
+        {
+          propName: 'email',
+          propValue: newEmail
+        }
+      ])
+    })
+      .then(response => {
+        alert('Updated successfully')
+      })
+      .catch(err => {
+        alert(err)
+      })
+  } else {
+    alert('Nothing to update')
+  }
+}
+
+function resetPassword() {
+  alert('Link to reset password has been sent to your email.')
 }
 
 function setCookie (cName, cValue, expDays) {

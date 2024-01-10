@@ -14,8 +14,9 @@
             <h2>Update Details</h2>
             <form id="signup" onsubmit="event.preventDefault(); updateUser()">
                 <input type="text" placeholder="Full name" id="name-signup">
-                <input type="email" placeholder="Email" id="email-update" >
-                <input type="button" value="Change password" class="update">
+                <input type="email" placeholder="Email" id="email-update" disabled>
+                <input type="button" value="Change password" class="update"
+                    onclick="event.preventDefault(); resetPassword()">
                 <input type="submit" value="Update" class="submit">
             </form>
         </div>
@@ -24,6 +25,7 @@
     <script>
         let server_url = '<%- url %>'
         let access_token = document.cookie.split('=')[1]
+        let currentName, currentEmail
 
         fetch(server_url + 'users/this', {
             method: 'GET',
@@ -32,18 +34,21 @@
                 'token': 'Bearer ' + access_token
             }
         })
-        .then(response => {
-            response.json().then(data => {
-                let name = document.getElementById("name-signup")
-                let email = document.getElementById("email-update")
+            .then(response => {
+                response.json().then(data => {
+                    let name = document.getElementById("name-signup")
+                    let email = document.getElementById("email-update")
 
-                name.value = data.name
-                email.value = data.email
+                    name.value = data.name
+                    email.value = data.email
+
+                    currentName = data.name
+                    currentEmail = data.email
+                })
             })
-        })
-        .catch(err => {
-            alert(err)
-        })
+            .catch(err => {
+                alert(err)
+            })
 
     </script>
 
