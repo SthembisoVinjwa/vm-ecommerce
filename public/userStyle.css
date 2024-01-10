@@ -86,9 +86,17 @@ main {
     height: 30px;
 }
 
-#email-update {
+#email-update, #email-forgot {
     height: 30px;
     margin-bottom: 10px;
+}
+
+#email-forgot {
+    height: 30px;
+}
+
+form .message {
+    margin-bottom: 30px;
 }
 
 .submit {

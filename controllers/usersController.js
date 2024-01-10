@@ -75,9 +75,45 @@ async function ops (req) {
   return updateOps
 }
 
+exports.users_reset_password = (req, res, next) => {
+  const user_email = req.body.email
+
+  User.findOne({ email: user_email })
+    .then(user => {
+      bcrypt
+        .hash(req.body.password, 10)
+        .then(hashed => {
+          User.findOneAndUpdate(
+            { email: user_email },
+            { $set: { password: hashed } },
+            { new: true }
+          ).then(user => {
+            res.status(200).json({
+              message: 'Password reset successful'
+            })
+          })
+          .catch(err => {
+            res.stats(500).json({
+              error: err
+            })
+          })
+        })
+        .catch(err => {
+          res.status(500).json({
+            error: err
+          })
+        })
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      })
+    })
+}
+
 exports.users_forgot = async function (req, res) {
   try {
-    const user_email = req.userData.email
+    let user_email = req.body.email
     const user = await User.findOne({ email: user_email })
 
     if (!user) {
@@ -98,15 +134,16 @@ exports.users_forgot = async function (req, res) {
         rejectUnauthorized: false
       }
     })
+
     const mailOptions = {
       from: 'vinjwacr7@gmail.com',
-      to: 'vinjwacr7@gmail.com',
+      to: user_email,
       subject: 'Please Reset your Password',
       html: `<h3>Dear User</h3>
         <p>You have requested to reset your password. To reset your password successfully, follow the link below to reset it</p>
-        <p>Click <a href="${process.env.SERVER_URL}app/user/forgot">${process.env.SERVER_URL}app/user/forgot</a></p>
+        <p>Click <a href="${process.env.SERVER_URL}app/user/forgot?email=${user_email}">${process.env.SERVER_URL}app/user/forgot?email=${user_email}</a></p>
         <p>Regards,</p><p>VM ecommerce</p>`
-    };    
+    }
 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) throw error

@@ -17,4 +17,8 @@ router.get('/user/forgot', (req, res, next) => {
     res.render('user/forgot', { url: process.env.SERVER_URL})
 })
 
+router.get('/user/forgot/email', (req, res, next) => {
+    res.render('user/email.ejs', { url: process.env.SERVER_URL})
+})
+
 module.exports = router

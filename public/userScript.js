@@ -85,8 +85,59 @@ function signUp () {
   }
 }
 
-function forgotPassword() {
-  window.location.assign('/app/user/forgot')
+function forgotPassword () {
+  window.location.assign("/app/user/forgot/email")
+}
+
+function sendEmail() {
+  let user_email = document.getElementById("email-forgot").value
+
+  fetch(server_url + 'users/forgot', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: user_email,
+    })
+  })
+  .then(
+    alert('Email sent to ' + user_email)
+  )
+  .catch(err => {
+    alert(err)
+  })
+}
+
+function resetPassword () {
+  let password = document.getElementById('password-signup').value
+  let confirm = document.getElementById('confirm-signup').value
+
+  if (password === confirm) {
+    fetch(server_url + 'users/resetPassword', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: user_email,
+        password: password
+      })
+    })
+    .then(response => {
+      if (response.status === 200) {
+        alert('Password reset successful')
+        window.location.assign('/app/user/signin')
+      } else {
+        alert('Password reset unsuccessful. Please restart resest process.')
+      }
+    })
+    .catch(err => {
+      alert(err)
+    })
+  } else {
+    alert('Passwords do not match')
+  }
 }
 
 function updateUser () {
@@ -106,7 +157,7 @@ function updateUser () {
     if (newPass !== confirmPass) {
       return alert('Passwords do not match')
     }
-    
+
     fetch(server_url + 'users/signin', {
       method: 'POST',
       headers: {
@@ -132,15 +183,13 @@ function updateUser () {
             {
               propName: 'password',
               propValue: newPass
-            },
+            }
           ])
         })
-        .then(
-          alert('Password updated successfully')
-        )
-        .catch(err => {
-          alert(err)
-        })
+          .then(alert('Password updated successfully'))
+          .catch(err => {
+            alert(err)
+          })
       }
     })
   } else {
@@ -155,13 +204,13 @@ function updateUser () {
           {
             propName: 'name',
             propValue: newName
-          },
+          }
         ])
       })
-      .then(alert('Name updated successfully'))
-      .catch(err => {
-        alert(err)
-      })
+        .then(alert('Name updated successfully'))
+        .catch(err => {
+          alert(err)
+        })
     } else {
       alert('Nothing to update')
     }
