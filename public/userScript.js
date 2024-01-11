@@ -23,11 +23,12 @@ function showSignIn () {
 function getCredentials () {
   let email = document.getElementById('email').value
   let password = document.getElementById('password').value
+  let rememberMe = document.getElementById("remember").checked
 
-  signIn(email, password)
+  signIn(email, password, rememberMe)
 }
 
-function signIn (email, password) {
+function signIn (email, password, rememberMe) {
   let status = 404
 
   fetch(server_url + 'users/signin', {
@@ -37,14 +38,15 @@ function signIn (email, password) {
     },
     body: JSON.stringify({
       email: email,
-      password: password
+      password: password,
+      remember: rememberMe
     })
   })
     .then(response => {
       status = response.status
       response.json().then(data => {
         if (status === 200) {
-          setCookie('access_token', data.token, 7)
+          setCookie('access_token', data.token, rememberMe ? 30 : 1)
           window.location.assign('/app')
         } else {
           alert(data.message)
@@ -75,7 +77,8 @@ function signUp () {
       })
     })
       .then(response => {
-        signIn(email, password)
+        // Remember me to false
+        signIn(email, password, false) 
       })
       .catch(err => {
         alert(err)
