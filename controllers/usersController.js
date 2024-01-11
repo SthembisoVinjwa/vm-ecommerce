@@ -240,7 +240,7 @@ exports.users_signin = (req, res, next) => {
               { userId: user._id, email: user.email },
               process.env.JWT_KEY,
               {
-                expiresIn: '2h'
+                expiresIn: '7d'
               }
             )
 

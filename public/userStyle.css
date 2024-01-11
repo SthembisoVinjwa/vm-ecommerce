@@ -2,7 +2,7 @@
     --bg-color-main: white;
     --bg-color-secondary: gray;
     --fg-color-main: forestgreen;
-    --fg-color-secondary: darkblue;
+    --fg-color-secondary: maroon;
     --font-color: #121212;
     --radius-boxes: 5px;
     --radius-button: 30px;
@@ -97,6 +97,17 @@ main {
 
 form .message {
     margin-bottom: 30px;
+}
+
+form #trashcan {
+    margin-top: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+form #trashcan i {
+    color: var(--fg-color-secondary);
 }
 
 .submit {

@@ -44,7 +44,7 @@ function signIn (email, password) {
       status = response.status
       response.json().then(data => {
         if (status === 200) {
-          setCookie('access_token', data.token, 30)
+          setCookie('access_token', data.token, 7)
           window.location.assign('/app')
         } else {
           alert(data.message)
@@ -86,11 +86,11 @@ function signUp () {
 }
 
 function forgotPassword () {
-  window.location.assign("/app/user/forgot/email")
+  window.location.assign('/app/user/forgot/email')
 }
 
-function sendEmail() {
-  let user_email = document.getElementById("email-forgot").value
+function sendEmail () {
+  let user_email = document.getElementById('email-forgot').value
 
   fetch(server_url + 'users/forgot', {
     method: 'POST',
@@ -98,15 +98,13 @@ function sendEmail() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: user_email,
+      email: user_email
     })
   })
-  .then(
-    alert('Email sent to ' + user_email)
-  )
-  .catch(err => {
-    alert(err)
-  })
+    .then(alert('Email sent to ' + user_email))
+    .catch(err => {
+      alert(err)
+    })
 }
 
 function resetPassword () {
@@ -124,17 +122,17 @@ function resetPassword () {
         password: password
       })
     })
-    .then(response => {
-      if (response.status === 200) {
-        alert('Password reset successful')
-        window.location.assign('/app/user/signin')
-      } else {
-        alert('Password reset unsuccessful. Please restart resest process.')
-      }
-    })
-    .catch(err => {
-      alert(err)
-    })
+      .then(response => {
+        if (response.status === 200) {
+          alert('Password reset successful')
+          window.location.assign('/app/user/signin')
+        } else {
+          alert('Password reset unsuccessful. Please restart resest process.')
+        }
+      })
+      .catch(err => {
+        alert(err)
+      })
   } else {
     alert('Passwords do not match')
   }
@@ -214,6 +212,31 @@ function updateUser () {
     } else {
       alert('Nothing to update')
     }
+  }
+}
+
+function deleteUser () {
+  if (window.confirm('Are you sure you want to delete your account?')) {
+    let access_token = document.cookie.split('=')[1]
+
+    fetch(server_url + 'users/', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        token: 'Bearer ' + access_token
+      }
+    })
+    .then(response => {
+      if (response.status === 200) {
+        alert('User deleted successfully')
+        window.location.assign('/app/user/signin')
+      } else {
+        alert('Could not delete user')
+      }
+    })
+    .catch(err => {
+      alert(err)
+    })
   }
 }
 

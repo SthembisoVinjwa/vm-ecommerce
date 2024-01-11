@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce Shop</title>
     <link rel="stylesheet" href="/userStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -21,6 +22,8 @@
                 <input type="button" value="Change Password" id="update-btn" class="update"
                     onclick="event.preventDefault(); newPassword()">
                 <input type="submit" value="Update" class="submit">
+                <button id="trashcan" onclick="event.preventDefault(); deleteUser()"><i
+                        class="fa-regular fa-trash-can fa-3x"></i></button>
             </form>
         </div>
     </main>
