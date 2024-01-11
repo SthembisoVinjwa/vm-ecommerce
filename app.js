@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 const usersRouter = require('./routes/users')
 const renderRouter = require('./routes/render')
+const itemsRouter = require('./routes/items');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -31,6 +32,7 @@ app.use(morgan('tiny'))
 app.use('/app', renderRouter)
 
 app.use('/users', usersRouter)
+app.use('/items', itemsRouter);
 
 app.use('', (req, res, next) => {
   const error = new Error('Not found')
