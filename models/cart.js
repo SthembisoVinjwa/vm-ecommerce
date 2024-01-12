@@ -5,7 +5,7 @@ const cartSchema = Schema(
   {
     _id: Schema.Types.ObjectId,
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    items: [{ type: Schema.Types.ObjectId, ref: 'Item' }]
+    orderItems: [{ type: Schema.Types.ObjectId, ref: 'OrderItem' }]
   },
   { timestamps: true }
 )
