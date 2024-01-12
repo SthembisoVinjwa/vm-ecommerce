@@ -130,7 +130,7 @@ router.delete('/:itemId', async (req, res, next) => {
     const response = await Item.findById(id).exec()
     path = `./uploadItems/${response.itemImage}`.replace(`${process.env.SERVER_URL}uploadItems/`, '')
   } catch (err) {
-    res.status(404).json({
+    return res.status(404).json({
       message: 'item not found'
     })
   }
@@ -139,7 +139,7 @@ router.delete('/:itemId', async (req, res, next) => {
     fs.unlinkSync(path)
   } catch (err) {
     if (err.code === 'ENOENT') {
-      res.status(404).json({
+      return res.status(404).json({
         message: 'image does not exist'
       })
     } else {
