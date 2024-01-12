@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 const usersRouter = require('./routes/users')
 const renderRouter = require('./routes/render')
 const itemsRouter = require('./routes/items');
+const orderItemsRouter = require('./routes/orderItems');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -33,6 +34,7 @@ app.use('/app', renderRouter)
 
 app.use('/users', usersRouter)
 app.use('/items', itemsRouter);
+app.use('/orderItems', orderItemsRouter);
 
 app.use('', (req, res, next) => {
   const error = new Error('Not found')
