@@ -28,6 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
 
+app.use('/uploadItems', express.static('uploadItems'))
+
 app.use(morgan('tiny'))
 
 app.use('/app', renderRouter)
