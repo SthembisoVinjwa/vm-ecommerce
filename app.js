@@ -23,11 +23,7 @@ const usersRouter = require('./routes/users')
 const renderRouter = require('./routes/render')
 const itemsRouter = require('./routes/items');
 const orderItemsRouter = require('./routes/orderItems');
-<<<<<<< HEAD
 const cartRouter = require('./routes/cart')
-=======
-const orderRouter = require('./routes/orders');
->>>>>>> f99837703032e50075aaeb2d0d629570a7fc9ec5
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -42,11 +38,7 @@ app.use('/app', renderRouter)
 app.use('/users', usersRouter)
 app.use('/items', itemsRouter);
 app.use('/orderItems', orderItemsRouter);
-<<<<<<< HEAD
 app.use('/cart', cartRouter);
-=======
-app.use('/orders', orderRouter)
->>>>>>> f99837703032e50075aaeb2d0d629570a7fc9ec5
 
 app.use('', (req, res, next) => {
   const error = new Error('Not found')
