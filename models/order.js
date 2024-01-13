@@ -11,7 +11,8 @@ const orderSchema = Schema(
     },
     complete: {
         type: Boolean,
-        default: false
+        default: false,
+        required: true
     },
     orderItems: [{
         type: Schema.Types.ObjectId,
