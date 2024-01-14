@@ -1,0 +1,51 @@
+:root {
+    --bg-color-main: #FAF0E6;
+    --bg-color-secondary: #B9B4C7;
+    --fg-color-main: #352F44;
+    --fg-color-secondary: #5C5470;
+    --font-color: #121212;
+    --radius-boxes: 5px;
+    --radius-button: 30px;
+    --shadow-color: rgba(0, 0, 0, 0.22);
+    --dropshadow: 6px 5px 20px 1px var(--shadow-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: var(--font-color)
+}
+
+header {
+    background-color: var(--bg-color-main);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4em;
+}
+
+.navbar {
+    list-style-type: none;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    text-align: center;
+    margin-left: 3em;
+    text-decoration: none;
+}
+
+.logo {
+    margin-left: 3em;
+}
+
+#user-pref {
+    margin-right: 6em;
+}
