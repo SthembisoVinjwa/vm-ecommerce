@@ -1,9 +1,9 @@
 :root {
-    --bg-color-main: #FAF0E6;
+    --bg-color-main: white;
     --bg-color-secondary: #B9B4C7;
     --fg-color-main: #352F44;
     --fg-color-secondary: #5C5470;
-    --font-color: #121212;
+    --font-color: var(--fg-color-main);
     --radius-boxes: 5px;
     --radius-button: 30px;
     --shadow-color: rgba(0, 0, 0, 0.22);
@@ -16,6 +16,10 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     color: var(--font-color)
+}
+
+body {
+    background-color: var(--bg-color-main);
 }
 
 header {
@@ -38,14 +42,107 @@ header {
 .navbar li a {
     display: block;
     text-align: center;
-    margin-left: 3em;
+    margin-left: 2.5em;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar li a:hover {
+    color: var(--fg-color-secondary)
 }
 
 .logo {
-    margin-left: 3em;
+    margin-left: 2em;
 }
 
 #user-pref {
-    margin-right: 6em;
+    margin-right: 5em;
+}
+
+#search-input {
+    width: 15em;
+    height: 2em;
+    background-color: transparent;
+    border: solid 0.2em var(--font-color);
+    color: var(--font-color);
+    font-size: 14px;
+}
+
+
+/* Search icon */
+.fas {
+    font-size: 18px;
+}
+
+#search-icon {
+    margin-left: 0.3em;
+}
+
+/* Cart icon */
+.fa-solid {
+    font-size: 20px;
+}
+
+#cart-icon {
+    margin-left: 1.5em;
+}
+
+#count-circle {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    background-color: var(--bg-color-secondary);
+    color: var(--bg-color-main);
+    border-radius: 50%;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+/* Login/Logout button */
+#login-logout {
+    width: 6em;
+    height: 2em;
+    background-color: var(--fg-color-secondary);
+    border: solid 0.2em var(--fg-color-secondary);
+    color: var(--bg-color-main);
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 2.5em;
+}
+
+#hamburger-icon {
+    display: none;
+}
+
+/* Make nav responsive */
+@media (max-width: 1218px) {
+    #search-input {
+        display: none
+    }
+    #search-icon {
+        margin-left: 1.5em;
+    }
+} 
+
+@media (max-width: 968px) {
+    #login-logout {
+        display: none;
+    }
+
+    #hamburger-icon {
+        display: inline;
+        margin-left: 2.5em;
+    }
+    #hamburger-icon .fa-solid {
+        font-size: 26px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    #search-input {
+        display: inline;
+    }
 }
