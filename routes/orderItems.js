@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const orderItemsController = require('../controllers/orderItemsController')
+const checkAuth = require('../middleware/checkAuth')
 
-router.post('/', orderItemsController.orderItems_create_order_item);
+router.post('/', checkAuth, orderItemsController.orderItems_create_order_item);
 
 router.get('/', orderItemsController.orderItems_get_all_order_items);
 
