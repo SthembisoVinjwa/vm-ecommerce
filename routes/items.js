@@ -4,6 +4,7 @@ const multer = require('multer')
 const fs = require('fs')
 const { exec } = require('child_process')
 const itemsController = require('../controllers/itemsController')
+const checkAuth = require('../middleware/checkAuth')
 
 if (!fs.existsSync('./uploadItems')) {
   fs.mkdirSync('./uploadItems')
@@ -34,14 +35,14 @@ const upload = multer({
   fileFilter: fileFilter
 })
 
-router.post('/', upload.single('itemImage'), itemsController.items_create_item)
+router.post('/', checkAuth, upload.single('itemImage'), itemsController.items_create_item)
 
 router.get('/', itemsController.items_get_all_items);
 
 router.get('/:itemId', itemsController.items_get_single_item);
 
-router.patch('/:itemId', itemsController.items_update_item);
+router.patch('/:itemId', checkAuth, itemsController.items_update_item);
 
-router.delete('/:itemId', itemsController.items_delete_single_item);
+router.delete('/:itemId', checkAuth, itemsController.items_delete_single_item);
 
 module.exports = router
