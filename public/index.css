@@ -100,7 +100,7 @@ header {
 }
 
 /* Login/Logout button */
-#login-logout {
+.login-logout {
     width: 6em;
     height: 2em;
     background-color: var(--fg-color-secondary);
@@ -145,4 +145,72 @@ header {
     #search-input {
         display: inline;
     }
+}
+
+/* Main */
+main {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+/* Landing Section */
+
+.landing-section {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+}
+
+.landing-section h1 {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 42px;
+}
+
+.intro-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+}
+
+#learn-button {
+    width: 100px;
+    border-radius: 20px 20px;
+    padding: 0px 10px;
+    background-color: transparent;
+    color: var(--fg-color-main);
+    border: solid 0.1em var(--fg-color-secondary);
+}
+
+#shop-button {
+    width: 100px;
+    border-radius: 20px 20px;
+    padding: 0px 10px;
+    border: solid 0.1em var(--fg-color-secondary);
+}
+
+.main-categories {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.category-box {
+    width: 250px;
+    height: 350px;
+    background-color: black;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+.category-box img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
