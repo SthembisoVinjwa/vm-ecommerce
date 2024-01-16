@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="/slider.js"></script>
     <title>vm-ecormmerce</title>
 </head>
 
@@ -46,12 +49,14 @@
                     <button class="login-logout" id="men-button">Men's Apparel</button>
                 </div>
                 <div class="category-box" id="women-box">
-                    <img src="/main-categories/women-category.jpg" alt="Woman wearing simple clothing. Image from freepik.com">
+                    <img src="/main-categories/women-category.jpg"
+                        alt="Woman wearing simple clothing. Image from freepik.com">
                     <div class="overlay"></div>
                     <button class="login-logout" id="women-button">Women's Apparel</button>
                 </div>
                 <div class="category-box" id="season-box">
-                    <img src="/main-categories/season-category.jpg" alt="Man wearing winter coat. Image from freepik.com">
+                    <img src="/main-categories/season-category.jpg"
+                        alt="Man wearing winter coat. Image from freepik.com">
                     <div class="overlay"></div>
                     <button class="login-logout" id="season-button">Seasonal Collections</button>
                 </div>
@@ -64,6 +69,38 @@
         </section>
         <section class="sale-section">
             <h1>Featured Products</h1>
+            <div class="slider-wrapper">
+                <button id="prev-slide" class="slide-button material-symbols-rounded">
+                    chevron_left
+                </button>
+                <ul class="image-list">
+                    <% for (let i=0; i < 10; i++) {%>
+                        <div class="item-card">
+                            <img src="/main-categories/women-category.jpg"
+                                alt="Woman wearing simple clothing. Image from freepik.com" class="image-item">
+                            <div class="item-content">
+                                <div class="item-details">
+                                    <p class="item-title">Sunday Dress</p>
+                                    <p class="item-bull">&bull;</p>
+                                    <p class="item-category">Women</p>
+                                    <p class="item-price">R299.99</p>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="login-logout item-buy">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </ul>
+                <button id="next-slide" class="slide-button material-symbols-rounded">
+                    chevron_right
+                </button>
+            </div>
+            <div class="slider-scrollbar">
+                <div class="scrollbar-track">
+                    <div class="scrollbar-thumb"></div>
+                </div>
+            </div>
         </section>
     </main>
     <footer></footer>
