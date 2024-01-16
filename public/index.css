@@ -52,7 +52,7 @@ header {
 }
 
 .logo {
-    margin-left: 2em;
+    margin-left: 2.5em;
 }
 
 #user-pref {
@@ -120,10 +120,11 @@ header {
     #search-input {
         display: none
     }
+
     #search-icon {
         margin-left: 1.5em;
     }
-} 
+}
 
 @media (max-width: 968px) {
     #login-logout {
@@ -134,6 +135,7 @@ header {
         display: inline;
         margin-left: 2.5em;
     }
+
     #hamburger-icon .fa-solid {
         font-size: 26px;
     }
@@ -147,9 +149,19 @@ header {
     }
 }
 
+@media (max-width: 629px) {
+    #search-input {
+        display: none;
+    }
+}    
+
+@media (max-width: 385px) {
+    #search-icon, #cart-icon {
+        display: none;
+    }
+}    
 /* Main */
 main {
-    display: flex;
     width: 100%;
     height: auto;
 }
@@ -162,10 +174,54 @@ main {
     margin-top: 40px;
 }
 
+@media (max-width: 1130px) {
+    .landing-section {
+        height: 1020px;
+    }
+
+    .category-box:last-child {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 648px) {
+    .landing-section {
+        height: 1068px;
+    }
+}
+
+@media (max-width: 591px) {
+    .landing-section {
+        height: 1115px;
+    }
+}
+
+@media (max-width: 579px) {
+    .landing-section {
+        height: 1500px;
+    }
+}
+
+@media (max-width: 539px) {
+    .landing-section {
+        height: 1890px;
+    }
+}
+
 .landing-section h1 {
     margin: 10px 0;
     text-align: center;
     font-size: 42px;
+}
+
+@media (max-width: 385px) {
+    .landing-section h1 {
+        font-size: 28px;
+    }
+
+    .landing-section {
+        height: 1810px;
+    }
 }
 
 .intro-actions {
@@ -208,6 +264,38 @@ main {
     margin-left: 40px;
     margin-bottom: 40px;
     position: relative;
+    box-sizing: border-box;
+}
+
+.category-box:first-child {
+    margin-left: 0;
+}
+
+@media (max-width: 1130px) {
+    .category-box:last-child {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 830px) {
+    .category-box:nth-last-child(2) {
+        margin-right: 40px;
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 540px) {
+    .category-box:nth-last-child(2) {
+        margin-left: 40px;
+        margin-right: 0;
+    }
+
+    .category-box:last-child {
+        margin-left: 40px;
+    }
+    .category-box:first-child {
+        margin-left: 40px;
+    }
 }
 
 .category-box img {
@@ -226,7 +314,10 @@ main {
     opacity: 0.85;
 }
 
-#men-button, #women-button, #season-button, #sports-button {
+#men-button,
+#women-button,
+#season-button,
+#sports-button {
     position: absolute;
     width: 200px;
     top: 45%;
@@ -236,4 +327,19 @@ main {
     border-radius: 20px 20px;
     padding: 0px 10px;
     background-color: transparent;
+}
+
+/* Sale section */
+.sale-section {
+    background-color: aquamarine;
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    padding: 0 85px;
+}
+
+.block-heading {
+    width: 100%;
+    height: 60px;
+    background-color: var(--fg-color-main);
 }
