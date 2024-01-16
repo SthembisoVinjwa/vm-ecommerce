@@ -102,7 +102,7 @@ header {
 /* Login/Logout button */
 .login-logout {
     width: 6em;
-    height: 2em;
+    height: 2.2em;
     background-color: var(--fg-color-secondary);
     border: solid 0.2em var(--fg-color-secondary);
     color: var(--bg-color-main);
