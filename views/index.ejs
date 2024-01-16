@@ -1,38 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="/slider.js"></script>
-    <title>vm-ecormmerce</title>
-</head>
+<%- include("./partials/head.ejs")%>
 
 <body>
-    <header>
-        <h1 class="logo">VM</h1>
-        <nav>
-            <ul class="navbar">
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Collection</a></li>
-                <li><a href="#">Terms and Conditions</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
-        <span id="user-pref">
-            <input type="text" placeholder="search" id="search-input">
-            <a id="search-icon"><i class="fas fa-search"></i></a>
-            <a id="cart-icon"><i class="fa-solid fa-cart-shopping"></i>
-                <div id="count-circle">0</div>
-            </a>
-            <button class="login-logout" id="login-logout">Login</button>
-            <a id="hamburger-icon"><i class="fa-solid fa-bars"></i></a>
-        </span>
-    </header>
+    <%- include("./partials/header.ejs")%>
     <main>
         <section class="landing-section">
             <h1>Explore our curated selection</h1>
