@@ -554,12 +554,12 @@ main {
     }
 
     .slider-wrapper .image-list {
-        gap: 10px;
+        gap: 15px;
         margin-bottom: 15px;
         scroll-snap-type: x mandatory;
     }
 
-    .slider-wrapper .image-list .image-item {
+    .slider-wrapper .item-card {
         width: 200px;
         height: 330px;
     }
