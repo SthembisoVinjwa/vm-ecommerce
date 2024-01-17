@@ -30,3 +30,9 @@ for (let i = 0; i < overlay.length; i++) {
         overlay[i].style.opacity = "0.85"
     })
 }
+
+var h1 = document.querySelector(".promo-content h1");
+
+h1.addEventListener("input", function() {
+  this.setAttribute("data-heading", this.innerText);
+});
