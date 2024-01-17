@@ -742,7 +742,7 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     padding: 40px 0;
-    gap: 1.98em;
+    gap: 1.78em;
     border-top: solid 1px var(--fg-color-secondary);
     margin-top: 80px;
 }
