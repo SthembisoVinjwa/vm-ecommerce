@@ -3,80 +3,90 @@
 
 <%- include("./partials/head.ejs")%>
 
-<body>
-    <%- include("./partials/header.ejs")%>
-    <main>
-        <section class="landing-section">
-            <h1>Explore our curated selection</h1>
-            <h1>and redefine your style narrative</h1>
-            <h1>one outfit at a time.</h1>
-            <div class="intro-actions">
-                <button class="login-logout" id="shop-button">Shop</button>
-                <button class="login-logout" id="learn-button">Learn more</button>
-            </div>
-            <div class="main-categories">
-                <div class="category-box" id="men-box">
-                    <img src="/main-categories/men-category.jpg" alt="Man wearing suit. Image from freepik.com">
-                    <div class="overlay"></div>
-                    <button class="login-logout" id="men-button">Men's Apparel</button>
-                </div>
-                <div class="category-box" id="women-box">
-                    <img src="/main-categories/women-category.jpg"
-                        alt="Woman wearing simple clothing. Image from freepik.com">
-                    <div class="overlay"></div>
-                    <button class="login-logout" id="women-button">Women's Apparel</button>
-                </div>
-                <div class="category-box" id="season-box">
-                    <img src="/main-categories/season-category.jpg"
-                        alt="Man wearing winter coat. Image from freepik.com">
-                    <div class="overlay"></div>
-                    <button class="login-logout" id="season-button">Seasonal Collections</button>
-                </div>
-                <div class="category-box" id="sports-box">
-                    <img src="/main-categories/sports-category.jpg" alt="Woman in sports. Image from freepik.com">
-                    <div class="overlay"></div>
-                    <button class="login-logout" id="sports-button">Athleisure and Activewear</button>
-                </div>
-            </div>
-        </section>
-        <section class="sale-section">
-            <h1>Featured Products</h1>
-            <div class="slider-wrapper">
-                <button id="prev-slide" class="slide-button material-symbols-rounded">
-                    chevron_left
-                </button>
-                <ul class="image-list">
-                    <% for (let i=0; i < 10; i++) {%>
-                        <div class="item-card">
-                            <img src="/main-categories/women-category.jpg"
-                                alt="Woman wearing simple clothing. Image from freepik.com" class="image-item">
-                            <div class="item-content">
-                                <div class="item-details">
-                                    <p class="item-title">Sunday Dress</p>
-                                    <p class="item-bull">&bull;</p>
-                                    <p class="item-category">Women</p>
-                                    <p class="item-price">R299.99</p>
-                                </div>
-                                <div class="item-actions">
-                                    <button class="login-logout item-buy">Buy</button>
-                                </div>
-                            </div>
+    <body>
+        <%- include("./partials/header.ejs")%>
+            <main>
+                <section class="landing-section">
+                    <h1>Explore our curated selection</h1>
+                    <h1>and redefine your style narrative</h1>
+                    <h1>one outfit at a time.</h1>
+                    <div class="intro-actions">
+                        <button class="login-logout" id="shop-button">Shop</button>
+                        <button class="login-logout" id="learn-button">Learn more</button>
+                    </div>
+                    <div class="main-categories">
+                        <div class="category-box" id="men-box">
+                            <img src="/main-categories/men-category.jpg" alt="Man wearing suit. Image from freepik.com">
+                            <div class="overlay"></div>
+                            <button class="login-logout" id="men-button">Men's Apparel</button>
                         </div>
-                        <% } %>
-                </ul>
-                <button id="next-slide" class="slide-button material-symbols-rounded">
-                    chevron_right
-                </button>
-            </div>
-            <div class="slider-scrollbar">
-                <div class="scrollbar-track">
-                    <div class="scrollbar-thumb"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer></footer>
-    <script src="/index.js"></script>
-</body>
+                        <div class="category-box" id="women-box">
+                            <img src="/main-categories/women-category.jpg"
+                                alt="Woman wearing simple clothing. Image from freepik.com">
+                            <div class="overlay"></div>
+                            <button class="login-logout" id="women-button">Women's Apparel</button>
+                        </div>
+                        <div class="category-box" id="season-box">
+                            <img src="/main-categories/season-category.jpg"
+                                alt="Man wearing winter coat. Image from freepik.com">
+                            <div class="overlay"></div>
+                            <button class="login-logout" id="season-button">Seasonal Collections</button>
+                        </div>
+                        <div class="category-box" id="sports-box">
+                            <img src="/main-categories/sports-category.jpg"
+                                alt="Woman in sports. Image from freepik.com">
+                            <div class="overlay"></div>
+                            <button class="login-logout" id="sports-button">Athleisure and Activewear</button>
+                        </div>
+                    </div>
+                </section>
+                <section class="sale-section">
+                    <h1>Featured Products</h1>
+                    <div class="slider-wrapper">
+                        <button id="prev-slide" class="slide-button material-symbols-rounded">
+                            chevron_left
+                        </button>
+                        <ul class="image-list">
+                            <% for (let i=0; i < 10; i++) {%>
+                                <div class="item-card">
+                                    <img src="/main-categories/women-category.jpg"
+                                        alt="Woman wearing simple clothing. Image from freepik.com" class="image-item">
+                                    <div class="item-content">
+                                        <div class="item-details">
+                                            <p class="item-title">Sunday Dress</p>
+                                            <p class="item-bull">&bull;</p>
+                                            <p class="item-category">Women</p>
+                                            <p class="item-price">R299.99</p>
+                                        </div>
+                                        <div class="item-actions">
+                                            <button class="login-logout item-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </ul>
+                        <button id="next-slide" class="slide-button material-symbols-rounded">
+                            chevron_right
+                        </button>
+                    </div>
+                    <div class="slider-scrollbar">
+                        <div class="scrollbar-track">
+                            <div class="scrollbar-thumb"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="promo-section">
+                    <div class="promo-content">
+                        <h1>Sales and Offers!</h1> 
+                        <h2>30% off</h2>
+                        <button class="login-logout" id="sales-button">View Offers</button>
+                    </div> 
+                </section>
+            </main>
+            <footer>
+
+            </footer>
+            <script src="/index.js"></script>
+    </body>
 
 </html>
