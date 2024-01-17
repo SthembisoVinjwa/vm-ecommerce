@@ -88,6 +88,7 @@ header {
 }
 
 #count-circle {
+    position: relative;
     display: inline-block;
     height: 15px;
     width: 15px;
@@ -97,6 +98,7 @@ header {
     border-radius: 50%;
     font-size: 13px;
     vertical-align: top;
+    left: -12px;
 }
 
 /* Login/Logout button */
