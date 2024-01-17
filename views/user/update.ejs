@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce Shop</title>
-    <link rel="stylesheet" href="/userStyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<%- include('../partials/head.ejs')%>
 
-<body>
-    <main>
-        <div class="container">
-            <h2>Update Details</h2>
-            <form id="signup" onsubmit="event.preventDefault(); updateUser()">
-                <input type="text" placeholder="Full name" id="name-signup">
-                <input type="email" placeholder="Email" id="email-update" disabled>
-                <input style="display: none;" type="password" placeholder="Old Password" id="password-update">
-                <input style="display: none;" type="password" placeholder="New Password" id="confirm-signup">
-                <input style="display: none;" type="password" placeholder="Confirm New Password" id="confirm-update">
-                <input type="button" value="Change Password" id="update-btn" class="update"
-                    onclick="event.preventDefault(); newPassword()">
-                <input type="submit" value="Update" class="submit">
-                <button id="trashcan" onclick="event.preventDefault(); deleteUser()"><i
-                        class="fa-regular fa-trash-can fa-3x"></i></button>
-            </form>
-        </div>
-    </main>
+    <head>
+        <link rel="stylesheet" href="/userStyle.css">
+    </head>
 
-    <script>
-        let server_url = '<%- url %>'
-        let access_token = document.cookie.split('=')[1]
-        let currentName, currentEmail
+    <body>
+        <%- include('../partials/header.ejs')%>
+            <main>
+                <div class="container">
+                    <h2>Update Details</h2>
+                    <form id="signup" onsubmit="event.preventDefault(); updateUser()">
+                        <input type="text" placeholder="Full name" id="name-signup">
+                        <input type="email" placeholder="Email" id="email-update" disabled>
+                        <input style="display: none;" type="password" placeholder="Old Password" id="password-update">
+                        <input style="display: none;" type="password" placeholder="New Password" id="confirm-signup">
+                        <input style="display: none;" type="password" placeholder="Confirm New Password"
+                            id="confirm-update">
+                        <input type="button" value="Change Password" id="update-btn" class="update"
+                            onclick="event.preventDefault(); newPassword()">
+                        <input type="submit" value="Update" class="submit" id="submit-update">
+                        <button id="trashcan" onclick="event.preventDefault(); deleteUser()"><i
+                                class="fa-regular fa-trash-can fa-3x"></i></button>
+                    </form>
+                </div>
+            </main>
 
-        fetch(server_url + 'users/this', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'token': 'Bearer ' + access_token
-            }
-        })
-            .then(response => {
-                response.json().then(data => {
-                    let name = document.getElementById("name-signup")
-                    let email = document.getElementById("email-update")
+            <%- include('../partials/footer.ejs')%>
 
-                    name.value = data.name
-                    email.value = data.email
+                <script>
+                    let server_url = '<%- url %>'
+                    let access_token = document.cookie.split('=')[1]
+                    let currentName, currentEmail
 
-                    currentName = data.name
-                    currentEmail = data.email
-                })
-            })
-            .catch(err => {
-                alert(err)
-            })
+                    fetch(server_url + 'users/this', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'token': 'Bearer ' + access_token
+                        }
+                    })
+                        .then(response => {
+                            response.json().then(data => {
+                                let name = document.getElementById("name-signup")
+                                let email = document.getElementById("email-update")
 
-    </script>
+                                name.value = data.name
+                                email.value = data.email
 
-    <script src="/userScript.js"></script>
-</body>
+                                currentName = data.name
+                                currentEmail = data.email
+                            })
+                        })
+                        .catch(err => {
+                            alert(err)
+                        })
+
+                </script>
+
+                <script src="/nav.js"></script>
+                <script src="/userScript.js"></script>
+    </body>
 
 </html>

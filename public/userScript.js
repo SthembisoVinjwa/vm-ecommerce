@@ -1,3 +1,59 @@
+let updateBtn = document.getElementById('update-btn')
+
+if (updateBtn) {
+  updateBtn.addEventListener('mouseover', function () {
+    updateBtn.style.cursor = 'pointer'
+  })
+}
+
+let loginBtn = document.getElementById('login-btn')
+
+if (loginBtn) {
+  loginBtn.addEventListener('mouseover', function () {
+    loginBtn.style.cursor = 'pointer'
+  })
+}
+
+let signupBtn = document.getElementById('signup-btn')
+
+if (signupBtn) {
+  signupBtn.addEventListener('mouseover', function () {
+    signupBtn.style.cursor = 'pointer'
+  })
+}
+
+let submitUpdateBtn = document.getElementById('submit-update')
+
+if (submitUpdateBtn) {
+  submitUpdateBtn.addEventListener('mouseover', function () {
+    submitUpdateBtn.style.cursor = 'pointer'
+  })
+}
+
+let resetBtn = document.getElementById('reset-btn')
+
+if (resetBtn) {
+  resetBtn.addEventListener('mouseover', function () {
+    resetBtn.style.cursor = 'pointer'
+  })
+}
+
+let saveBtn = document.getElementById('save-btn')
+
+if (saveBtn) {
+  saveBtn.addEventListener('mouseover', function () {
+    saveBtn.style.cursor = 'pointer'
+  })
+}
+
+let trashcan = document.getElementById('trashcan')
+
+if (trashcan) {
+  trashcan.addEventListener('mouseover', function () {
+    trashcan.style.cursor = 'pointer'
+  })
+}
+
 function showSignUp () {
   let signin = document.getElementById('signin')
   let signup = document.getElementById('signup')
@@ -23,7 +79,7 @@ function showSignIn () {
 function getCredentials () {
   let email = document.getElementById('email').value
   let password = document.getElementById('password').value
-  let rememberMe = document.getElementById("remember").checked
+  let rememberMe = document.getElementById('remember').checked
 
   signIn(email, password, rememberMe)
 }
@@ -78,7 +134,7 @@ function signUp () {
     })
       .then(response => {
         // Remember me to false
-        signIn(email, password, false) 
+        signIn(email, password, false)
       })
       .catch(err => {
         alert(err)
@@ -229,17 +285,17 @@ function deleteUser () {
         token: 'Bearer ' + access_token
       }
     })
-    .then(response => {
-      if (response.status === 200) {
-        alert('User deleted successfully')
-        window.location.assign('/app/user/signin')
-      } else {
-        alert('Could not delete user')
-      }
-    })
-    .catch(err => {
-      alert(err)
-    })
+      .then(response => {
+        if (response.status === 200) {
+          alert('User deleted successfully')
+          window.location.assign('/app/user/signin')
+        } else {
+          alert('Could not delete user')
+        }
+      })
+      .catch(err => {
+        alert(err)
+      })
   }
 }
 
@@ -247,8 +303,6 @@ function newPassword () {
   let oldPass = document.getElementById('password-update')
   let newPass = document.getElementById('confirm-signup')
   let confirmPass = document.getElementById('confirm-update')
-
-  let updateBtn = document.getElementById('update-btn')
 
   if (oldPass.style.display === 'none') {
     oldPass.style.display = 'flex'

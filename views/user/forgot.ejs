@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce Shop</title>
-    <link rel="stylesheet" href="/userStyle.css">
-</head>
+<%- include('../partials/head.ejs')%>
 
-<body>
-    <main>
-        <div class="container">
-            <h2>Reset Password</h2>
-            <form id="signup" onsubmit="event.preventDefault(); resetPassword()">
-                <input type="password" placeholder="New Password" id="password-signup" required>
-                <input type="password" placeholder="Confirm Password" id="confirm-signup" required>
-                <input type="submit" value="Save" class="submit">
-            </form>
-        </div>
-    </main>
+    <head>
+        <link rel="stylesheet" href="/userStyle.css">
+    </head>
 
-    <script>
-        const server_url = '<%- url %>'
-        const params = new URLSearchParams(window.location.search);
-        const user_email = params.get('email');
-    </script>
+    <body>
+        <%- include('../partials/header.ejs')%>
+        <main>
+            <div class="container">
+                <h2>Reset Password</h2>
+                <form id="signup" onsubmit="event.preventDefault(); resetPassword()">
+                    <input type="password" placeholder="New Password" id="password-signup" required>
+                    <input type="password" placeholder="Confirm Password" id="confirm-signup" required>
+                    <input id="save-btn" type="submit" value="Save" class="submit">
+                </form>
+            </div>
+        </main>
+        <%- include('../partials/footer.ejs')%>
 
-    <script src="/userScript.js"></script>
-</body>
+        <script>
+            const server_url = '<%- url %>'
+            const params = new URLSearchParams(window.location.search);
+            const user_email = params.get('email');
+        </script>
+
+        <script src="/userScript.js"></script>
+    </body>
 
 </html>
