@@ -5,8 +5,8 @@
 }
 
 #text{
-    height: 100px;
-    background-color: black;
+    height: 80px;
+    background-color: var(--bg-color-main);
     color: white;
     display: flex;
     justify-content: center;
