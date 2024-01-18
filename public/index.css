@@ -758,3 +758,29 @@ footer {
     display: block;
     margin: 1em 0;
 }
+
+.socials{
+    display: flex;
+    justify-content: space-between;
+}
+
+.socials a{
+    font-size: 40px;
+
+}
+
+#facebook{
+    color: #3b5998;
+}
+
+#twitter{
+    color:black;
+}
+
+#github{
+    color: #00405d;
+}
+
+#linkedin{
+    color: #0077b5;
+}

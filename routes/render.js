@@ -5,6 +5,10 @@ router.get('/', (req, res, next) => {
     res.render('index')
 })
 
+router.get('/browse', (req, res, next) => {
+    res.render('browse')
+})
+
 router.get('/user/signin', (req, res, next) => {
     res.render('user/auth', { url: process.env.SERVER_URL})
 })
