@@ -1,0 +1,74 @@
+:root {
+    --bg-color-main: white;
+    --bg-color-secondary: #B9B4C7;
+    --fg-color-main: #352F44;
+    --fg-color-secondary: #5C5470;
+    --font-color: var(--fg-color-main);
+    --radius-boxes: 5px;
+    --radius-button: 30px;
+    --shadow-color: rgba(0, 0, 0, 0.22);
+    --dropshadow: 6px 5px 20px 1px var(--shadow-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: var(--font-color)
+}
+
+body {
+    background-color: var(--bg-color-main);
+}
+
+/* Footer section */
+footer {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 0;
+    gap: 1.78em;
+    border-top: solid 1px var(--fg-color-secondary);
+    margin-top: 80px;
+}
+
+.footer-item {
+    width: 260px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.footer-item a {
+    text-decoration: none;
+    display: block;
+    margin: 1em 0;
+}
+
+.socials{
+    display: flex;
+    justify-content: space-between;
+}
+
+.socials a{
+    font-size: 40px;
+
+}
+
+#facebook{
+    color: #3b5998;
+}
+
+#twitter{
+    color:black;
+}
+
+#github{
+    color: #00405d;
+}
+
+#linkedin{
+    color: #0077b5;
+}
