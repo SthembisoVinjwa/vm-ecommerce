@@ -22,54 +22,6 @@ body {
     background-color: var(--bg-color-main);
 }
 
-/* Make nav responsive */
-@media (max-width: 1218px) {
-    #search-input {
-        display: none
-    }
-
-    #search-icon {
-        margin-left: 1.5em;
-    }
-}
-
-@media (max-width: 968px) {
-    #login-logout {
-        display: none;
-    }
-
-    #hamburger-icon {
-        display: inline;
-        margin-left: 2.5em;
-    }
-
-    #hamburger-icon .fa-solid {
-        font-size: 26px;
-    }
-
-    .navbar {
-        display: none;
-    }
-
-    #search-input {
-        display: inline;
-    }
-}
-
-@media (max-width: 629px) {
-    #search-input {
-        display: none;
-    }
-}
-
-@media (max-width: 385px) {
-
-    #search-icon,
-    #cart-icon {
-        display: none;
-    }
-}
-
 /* Main */
 main {
     width: 100%;
