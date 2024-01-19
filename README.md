@@ -1,4 +1,4 @@
-# vm-ecommerce Website
+# vm-ecommerce website
 
 Welcome to our E-commerce website repository! The project is a full-stack web application.
 
@@ -24,7 +24,7 @@ Our E-commerce website allows users to browse, search and purchase products.
   - NodeJs
   - Express
 - **Database:**
-  -MongoDB
+  - MongoDB
 
 ## Authors
 - Sthembiso Vinjwa (https://github.com/SthembisoVinjwa)
