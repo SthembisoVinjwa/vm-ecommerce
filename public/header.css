@@ -119,6 +119,34 @@ header {
     display: none;
 }
 
+/* Dropdown Hamburger */
+#dropdown-container {
+    width: 200px;
+    background-color: var(--fg-color-secondary);
+    position: absolute;
+    right: 80px;
+    top: 80px;
+    z-index: 10;
+}
+
+.navbar-hamburger {
+    list-style: none;
+}
+
+.navbar-hamburger li a {
+    color: var(--bg-color-main);
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5em;
+    border-bottom: solid 1px var(--bg-color-secondary);
+}
+
+#dropdown-container {
+    display: none;
+}
+
 /* Make nav responsive */
 @media (max-width: 1218px) {
     #search-input {

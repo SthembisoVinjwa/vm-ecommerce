@@ -26,11 +26,18 @@ loginButton.addEventListener('click', function () {
 // Hamburger
 let hamburger = document.getElementById('hamburger-icon')
 
-
 if (hamburger) {
   hamburger.addEventListener('mouseover', function (){
     hamburger.style.cursor = 'pointer'
   })
 }
 
-
+hamburger.addEventListener('click', function() {
+  let container = document.getElementById("dropdown-container")
+  
+  if (!container.style.display || container.style.display === "none") {
+    container.style.display = "block" 
+  } else {
+    container.style.display = "none" 
+  }
+})
