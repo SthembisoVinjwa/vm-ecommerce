@@ -41,3 +41,10 @@ hamburger.addEventListener('click', function() {
     container.style.display = "none" 
   }
 })
+
+let hamburgerMedia = window.matchMedia("(min-width: 968px)")
+
+hamburgerMedia.addEventListener("change", function() {
+  let container = document.getElementById("dropdown-container")
+  container.style.display = "none" 
+})

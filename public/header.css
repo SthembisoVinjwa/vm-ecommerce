@@ -54,6 +54,9 @@ header {
 
 .logo {
     margin-left: 2.5em;
+    text-decoration: none;
+    font-size: 2.2em;
+    font-weight: bold;
 }
 
 #user-pref {
@@ -140,7 +143,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     padding: 0.5em;
-    border-bottom: solid 1px var(--bg-color-secondary);
+    border-bottom: solid 1px var(--fg-color-main);
 }
 
 #dropdown-container {
@@ -187,8 +190,14 @@ header {
     }
 }
 
-@media (max-width: 385px) {
+@media (min-width: 385px) {
+    #search-tag,
+    #cart-tag {
+        display: none;
+    }
+}
 
+@media (max-width: 385px) {
     #search-icon,
     #cart-icon {
         display: none;
