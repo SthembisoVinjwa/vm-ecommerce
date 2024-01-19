@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 31em;
     height: 600px;
     background-color: var(--bg-color-main);
     margin: 30px 0px;
@@ -17,29 +17,6 @@
 
 /******* Container Responsiveness ********/
 
-@media(max-width: 1100px) {
-    .container {
-        width: 45%;
-    }
-}
-
-@media(max-width: 900px) {
-    .container {
-        width: 55%;
-    }
-}
-
-@media(max-width: 750px) {
-    .container {
-        width: 75%;
-    }
-}
-
-@media(max-width: 550px) {
-    .container {
-        width: 95%;
-    }
-}
 
 /*************************************/
 
