@@ -333,3 +333,151 @@ fieldset {
         width: 80%;
     }
 }
+
+
+/* -------------------view item---------------------- */
+
+
+
+.products-review {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: none;
+
+}
+
+
+.products-review .preview {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    height: fit-content;
+    flex-direction: column;
+    width: 350px;
+    /* height: 510px; */
+    border-radius: 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.products-review .preview.active {
+    display: inline-block;
+}
+
+.preview-image {
+    height: 250px;
+    margin-top: 10px;
+    max-width: 250px;
+}
+
+.remove {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    cursor: pointer;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exit{
+    height: 80%;
+    width: 80%;
+}
+
+.preview-details{
+    width: 100%;
+    display: flex;
+    height: 50px;
+    padding: 5px;
+    align-items: center;
+}
+
+.preview-title{
+    font-size: 20px;
+    color: var(--fg-color-main);
+    display: inline;
+    font-weight: bold;
+}
+
+.preview-bull{
+    font-size: 22px;
+    margin: 0 10px;
+    color: var(--fg-color-main);
+    display: inline;
+
+}
+
+.preview-category{
+
+    font-size: 18px;
+    display: inline;
+}
+.description{
+
+    border: 0.5px solid black;
+    max-height: 70px;
+    height: fit-content;
+    padding: 5px;
+
+}
+
+.price{
+    display: flex;
+}
+
+.price > *{
+    margin-top: 10px;
+    font-size: 20px;
+    color: var(--fg-color-secondary);
+    font-weight: bold;
+    display: block;
+}
+
+.buttons{
+    border-top: 1px solid black;
+    padding-top: 10px;
+    
+    margin-top: 5px;
+}
+#add-to-cart-btn{
+    cursor: pointer;
+    width: 100px;
+    margin: 0px auto;
+    width: 6em;
+    height: 2.2em;
+    background-color: var(--fg-color-secondary);
+    border: solid 0.2em var(--fg-color-secondary);
+    color: var(--bg-color-main);
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+
+
+
+@media(max-width:991px){
+    .preview{
+        font-size: 55%;
+    }
+}
+
+@media(max-width:450px){
+    .preview{
+        font-size: 50%;
+    }
+}
