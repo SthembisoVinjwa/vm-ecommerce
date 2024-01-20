@@ -5,9 +5,11 @@
 
     <body>
         <%- include('./partials/header.ejs') %>
+            <button id="toggle-filter" class="login-logout">Tap to filter</button>
             <h1 id="products-heading">Products</h1>
             <section class="container">
-                <div class="filter">
+                <!-- <button class="filter-button">Toggle Filter</button> -->
+                <div class="filter" id="filter">
                     <div class="head">
                         <h1>Filter</h1>
                         <hr id="line-filter">
@@ -17,32 +19,32 @@
                         <div class="side">
                             <h2 class="category-type">Category:</h2>
 
-                            <div class="category-box2">
+                            <div class="category-box2 flex-display">
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Men">
+                                        <input type="radio" name="category" id="" value="Men">
                                         Men
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Women">
+                                        <input type="radio" name="category" id="" value="Women">
                                         Women
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Seasonal">
+                                        <input type="radio" name="category" id="" value="Seasonal">
                                         Seasonal
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Sportswear">
+                                        <input type="radio" name="category" id="" value="Sportswear">
                                         Sportswear
                                     </label>
                                 </fieldset>
@@ -50,32 +52,32 @@
                         </div>
                         <div class="side">
                             <h2 class="category-type">Type:</h2>
-                            <div class="category-box2">
+                            <div class="category-box2 flex-display">
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Shoe">
+                                        <input type="radio" name="type" id="" value="Shoe">
                                         Shoe
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="=Shirt">
+                                        <input type="radio" name="type" id="" value="=Shirt">
                                         Shirt
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Jacket">
+                                        <input type="radio" name="type" id="" value="Jacket">
                                         Jacket
                                     </label>
                                 </fieldset>
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="" id="" value="Shorts">
+                                        <input type="radio" name="type" id="" value="Shorts">
                                         Shorts
                                     </label>
                                 </fieldset>
@@ -85,38 +87,51 @@
                         <div class="side">
                             <h2 class="category-type">Color:</h2>
 
-                            <div class="category-box2">
+                            <div class="category-box2 newstyle">
                                 <fieldset>
-
-                                    <label for="">
-                                        <input type="radio" name="" id="" value="Blue">
-                                        Blue
-                                    </label>
+                                    <input type="radio" name="color" id="blue" value="Blue">
+                                    <label for="blue" class="color-option" style="background-color: blue;"></label>
                                 </fieldset>
                                 <fieldset>
-
-                                    <label for="">
-                                        <input type="radio" name="" id="" value="Brown">
-                                        Brown
-                                    </label>
+                                    <input type="radio" name="color" id="brown" value="Brown">
+                                    <label for="brown" class="color-option" style="background-color: brown;"></label>
                                 </fieldset>
                                 <fieldset>
-
-                                    <label for="">
-                                        <input type="radio" name="" id="" value="Red">
-                                        Red
-                                    </label>
+                                    <input type="radio" name="color" id="red" value="Red">
+                                    <label for="red" class="color-option" style="background-color: red;"></label>
                                 </fieldset>
                                 <fieldset>
-
-                                    <label for="">
-                                        <input type="radio" name="" id="" value="Green">
-                                        Green
-                                    </label>
+                                    <input type="radio" name="color" id="green" value="Green">
+                                    <label for="green" class="color-option" style="background-color: green;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="purple" value="Purple">
+                                    <label for="purple" class="color-option" style="background-color: purple;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="yellow" value="Yellow">
+                                    <label for="yellow" class="color-option" style="background-color: yellow;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="orange" value="Orange">
+                                    <label for="orange" class="color-option" style="background-color: orange;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="pink" value="Pink">
+                                    <label for="pink" class="color-option" style="background-color: pink;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="cyan" value="Cyan">
+                                    <label for="cyan" class="color-option" style="background-color: cyan;"></label>
+                                </fieldset>
+                                <fieldset>
+                                    <input type="radio" name="color" id="magenta" value="Magenta">
+                                    <label for="magenta" class="color-option"
+                                        style="background-color: magenta;"></label>
                                 </fieldset>
                             </div>
                         </div>
-                        <button class="login-logout" id="filter-button">Filter</button>
+                        <button class="login-logout fix-margin" id="filter-button">Filter</button>
                     </form>
 
                 </div>
@@ -464,6 +479,27 @@
             <script src="/nav.js"></script>
 
             <%- include('./partials/footer.ejs') %>
+                <script>
+                    document.getElementById('toggle-filter').addEventListener('click', function () {
+                        if (document.querySelector('.filter').classList.contains('hide')) {
+                            document.querySelector('.filter').classList.remove('hide')
+                        } else {
+                            document.querySelector('.filter').classList.toggle('open');
+                        }
+                    });
+
+                    let filter = document.querySelector('.filter')
+                    console.log(filter)
+
+                    document.addEventListener('click', (e) => {
+
+                        if (!filter.contains(e.target) && e.target.id !== 'toggle-filter') {
+                            console.log(filter.classList.contains('hide'))
+                            filter.classList.add('hide')
+                        }
+                    })
+                </script>
+
     </body>
 
 
