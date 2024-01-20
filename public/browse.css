@@ -110,7 +110,6 @@ form #filter-button {
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    padding: 10px 10px;
 }
 
 .products-box .item-card {
