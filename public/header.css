@@ -190,14 +190,14 @@ header {
     }
 }
 
-@media (min-width: 385px) {
+@media (min-width: 397px) {
     #search-tag,
     #cart-tag {
         display: none;
     }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 397px) {
     #search-icon,
     #cart-icon {
         display: none;
