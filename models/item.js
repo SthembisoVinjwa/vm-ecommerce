@@ -6,7 +6,8 @@ const itemSchema = mongoose.Schema({
     type: { type: String, required: true },
     color: { type: String, required: true },
     itemImage: { type: String, required: true },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true }, 
+    description: { type: String}
 });
 
 module.exports = mongoose.model('Item', itemSchema);

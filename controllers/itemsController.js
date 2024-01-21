@@ -9,7 +9,8 @@ exports.items_create_item = (req, res, next) => {
     type: req.body.type,
     color: req.body.color,
     itemImage: process.env.SERVER_URL + 'uploadItems/' + req.file.filename,
-    price: req.body.price
+    price: req.body.price,
+    description: req.body.description
   })
 
   item
@@ -29,7 +30,7 @@ exports.items_create_item = (req, res, next) => {
 
 exports.items_get_all_items = (req, res, next) => {
   Item.find()
-    .select('name price color itemImage _id type')
+    .select('name price color itemImage _id type description')
     .exec()
     .then(response => {
       res.status(200).json({
@@ -48,7 +49,7 @@ exports.items_get_single_item = (req, res, next) => {
   const id = req.params.itemId
 
   Item.findById(id)
-    .select('name price color itemImage _id type')
+    .select('name price color itemImage _id type description')
     .exec()
     .then(response => {
       res.status(200).json({
