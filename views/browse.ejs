@@ -3,6 +3,12 @@
 
 <%- include('./partials/head.ejs') %>
 
+    <head>
+        <script>
+            let server_url = '<%- url %>'
+        </script>
+    </head>
+
     <body>
         <%- include('./partials/header.ejs') %>
             <button id="toggle-filter" class="login-logout">Tap to filter</button>
@@ -143,13 +149,14 @@
                                     alt="<%- items.Items[i].name %>" class="image-item">
                                 <div class="item-content">
                                     <div class="item-details">
+                                        <p style="display:none" class="item-id"><%- items.Items[i]._id %></p>
                                         <p class="item-title"><%- items.Items[i].name %></p>
                                         <p class="item-bull">&bull;</p>
                                         <p class="item-category"><%- items.Items[i].type %></p>
                                         <p class="item-price"><%- items.Items[i].price %></p>
                                     </div>
                                     <div class="item-actions">
-                                        <button class="login-logout item-buy">Add To Cart</button>
+                                        <button class="login-logout item-buy" onclick="addToCart(this)">Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -171,16 +178,15 @@
                     });
 
                     let filter = document.querySelector('.filter')
-                    console.log(filter)
 
                     document.addEventListener('click', (e) => {
 
                         if (!filter.contains(e.target) && e.target.id !== 'toggle-filter') {
-                            console.log(filter.classList.contains('hide'))
                             filter.classList.add('hide')
                         }
                     })
                 </script>
+                <script src="/shop.js"></script>
 
     </body>
 

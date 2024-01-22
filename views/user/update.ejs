@@ -5,6 +5,9 @@
 
     <head>
         <link rel="stylesheet" href="/userStyle.css">
+        <script>
+            let server_url = '<%- url %>'
+        </script>
     </head>
 
     <body>
@@ -31,7 +34,6 @@
             <%- include('../partials/footer.ejs')%>
 
                 <script>
-                    let server_url = '<%- url %>'
                     let access_token = document.cookie.split('=')[1]
                     let currentName, currentEmail
 

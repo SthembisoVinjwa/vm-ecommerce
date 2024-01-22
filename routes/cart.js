@@ -8,6 +8,8 @@ router.post('/', checkAuth, cartController.cart_add)
 
 router.get('/', checkAuth, cartController.cart_get)
 
+router.get('/total', checkAuth, cartController.cart_get_total)
+
 router.delete('/', checkAuth, cartController.cart_delete)
 
 module.exports = router

@@ -94,8 +94,8 @@ header {
 #count-circle {
     position: relative;
     display: inline-block;
-    height: 15px;
-    width: 15px;
+    height: 16px;
+    width: 16px;
     text-align: center;
     background-color: var(--bg-color-secondary);
     color: var(--bg-color-main);

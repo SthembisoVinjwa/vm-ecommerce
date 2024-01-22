@@ -124,13 +124,42 @@ exports.cart_add = async (req, res, next) => {
 }
 
 exports.cart_get = (req, res, next) => {
-  Cart.find({ user: req.userData.userId })
+  Cart.findOne({ user: req.userData.userId })
     .select('-__v')
     .populate('user')
     .populate('orderItems')
     .then(cart => {
       if (cart) {
         return res.status(200).json(cart)
+      } else {
+        return res.status(404).json({
+          message: 'Cart not found'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      })
+    })
+}
+
+exports.cart_get_total = (req, res, next) => {
+  Cart.findOne({ user: req.userData.userId })
+    .select('-__v')
+    .populate('user')
+    .populate('orderItems')
+    .then(cart => {
+      if (cart) {
+        let count = 0
+
+        for (let i = 0; i < cart.orderItems.length; i++) {
+          count += cart.orderItems[i].quantity
+        }
+
+        return res.status(200).json({
+          cartTotal: count
+        })
       } else {
         return res.status(404).json({
           message: 'Cart not found'
