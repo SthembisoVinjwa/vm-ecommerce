@@ -4,11 +4,9 @@ const checkAuth = require('../middleware/checkAuth')
 
 const cartController = require('../controllers/cartController')
 
-router.post('/', checkAuth, cartController.cart_create)
+router.post('/', checkAuth, cartController.cart_add)
 
 router.get('/', checkAuth, cartController.cart_get)
-
-router.patch('/', checkAuth, cartController.cart_patch)
 
 router.delete('/', checkAuth, cartController.cart_delete)
 

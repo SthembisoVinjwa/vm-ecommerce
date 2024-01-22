@@ -30,7 +30,7 @@ exports.items_create_item = (req, res, next) => {
 
 exports.items_get_all_items = (req, res, next) => {
   Item.find()
-    .select('name price color itemImage _id type description')
+    .select('_id name price color itemImage _id type description')
     .exec()
     .then(response => {
       res.status(200).json({
