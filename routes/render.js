@@ -1,12 +1,29 @@
 const express = require('express')
 const router = express.Router()
+const axios = require('axios')
 
-router.get('/', (req, res, next) => {
-    res.render('index')
+axios.defaults.baseURL = process.env.SERVER_URL
+
+router.get('/', async (req, res, next) => {
+    const response = await axios.get('items')
+    let items = []
+
+    if (response.status === 200) {
+        items = response.data
+    }
+
+    res.render('index', {items: items})
 })
 
-router.get('/browse', (req, res, next) => {
-    res.render('browse')
+router.get('/browse', async (req, res, next) => {
+    const response = await axios.get('items')
+    let items = []
+
+    if (response.status === 200) {
+        items = response.data
+    }
+
+    res.render('browse', {items: items})
 })
 
 router.get('/user/signin', (req, res, next) => {

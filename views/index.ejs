@@ -15,7 +15,8 @@
                     <h1>and redefine your style narrative</h1>
                     <h1>one outfit at a time.</h1>
                     <div class="intro-actions">
-                        <button class="login-logout" id="shop-button"><a href="http://localhost:3000/app/browse">Shop</a></button>
+                        <button class="login-logout" id="shop-button"><a
+                                href="http://localhost:3000/app/browse">Shop</a></button>
                         <button class="login-logout" id="learn-button">Learn more</button>
                     </div>
                     <div class="main-categories">
@@ -51,16 +52,16 @@
                             chevron_left
                         </button>
                         <ul class="image-list">
-                            <% for (let i=0; i < 10; i++) {%>
+                            <% for (let i=0; i < 6; i++) {%>
                                 <div class="item-card">
-                                    <img src="/main-categories/women-category.jpg"
-                                        alt="Woman wearing simple clothing. Image from freepik.com" class="image-item">
+                                    <img src="<%- items.Items[i].itemImage %>" alt="<%- items.Items[i].name %>"
+                                        class="image-item">
                                     <div class="item-content">
                                         <div class="item-details">
-                                            <p class="item-title">Sunday Dress</p>
+                                            <p class="item-title"><%- items.Items[i].name %></p>
                                             <p class="item-bull">&bull;</p>
-                                            <p class="item-category">Women</p>
-                                            <p class="item-price">R299.99</p>
+                                            <p class="item-category"><%- items.Items[i].type %></p>
+                                            <p class="item-price"><%- items.Items[i].price %></p>
                                         </div>
                                         <div class="item-actions">
                                             <button class="login-logout item-buy">Buy</button>
