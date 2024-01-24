@@ -29,7 +29,22 @@ exports.items_create_item = (req, res, next) => {
 }
 
 exports.items_get_all_items = (req, res, next) => {
-  Item.find()
+  const query = req.query;
+
+  let filter = {};
+
+  // Build the filter object dynamically
+  for (const key in query) {
+    if (query.hasOwnProperty(key)) {
+      filter[key] = query[key];
+    }
+  }
+
+
+  if (Object.keys(filter).length !== 0) {
+    console.log(filter);
+
+    Item.find(filter)
     .select('name price color itemImage _id type description')
     .exec()
     .then(response => {
@@ -43,6 +58,29 @@ exports.items_get_all_items = (req, res, next) => {
         error: err
       })
     })
+
+    
+  } else {
+    console.log('we dont have query parameters');
+
+
+    Item.find()
+    .select('name price color itemImage _id type description')
+    .exec()
+    .then(response => {
+      res.status(200).json({
+        numberOfItems: response.length,
+        Items: response
+      })
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      })
+    })
+  }
+
+ 
 }
 
 exports.items_get_single_item = (req, res, next) => {

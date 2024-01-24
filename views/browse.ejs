@@ -15,7 +15,7 @@
                         <hr id="line-filter">
                     </div>
 
-                    <form action="" method="post">
+                    <form action="" method="post" id="filter-form">
                         <div class="side">
                             <h2 class="category-type">Category:</h2>
 
@@ -56,8 +56,8 @@
                                 <fieldset>
 
                                     <label for="">
-                                        <input type="radio" name="type" id="" value="Shoe">
-                                        Shoe
+                                        <input type="radio" name="type" id="" value="Shoes">
+                                        Shoes
                                     </label>
                                 </fieldset>
                                 <fieldset>
@@ -137,23 +137,36 @@
                 </div>
                 <div class="products">
                     <div class="products-box">
-                        <% for (let i=0; i < items.numberOfItems; i++) {%>
-                            <div class="item-card">
-                                <img src="<%- items.Items[i].itemImage %>"
-                                    alt="<%- items.Items[i].name %>" class="image-item">
-                                <div class="item-content">
-                                    <div class="item-details">
-                                        <p class="item-title"><%- items.Items[i].name %></p>
-                                        <p class="item-bull">&bull;</p>
-                                        <p class="item-category"><%- items.Items[i].type %></p>
-                                        <p class="item-price"><%- items.Items[i].price %></p>
-                                    </div>
-                                    <div class="item-actions">
-                                        <button class="login-logout item-buy">Add To Cart</button>
+                        <% if (items.numberOfItems === 0) { %>
+                         
+                            <div class="message-box">
+                                <iframe src="https://lottie.host/embed/7a90bda5-f79e-4e48-b8cc-e6542b8387ff/C6sdjhWP4H.json"></iframe>
+                            </div>
+
+                        <% } else { %>
+
+                            <% for (let i=0; i < items.numberOfItems; i++) {%>
+                                <div class="item-card">
+                                    <img src="<%- items.Items[i].itemImage %>"
+                                        alt="<%- items.Items[i].name %>" class="image-item">
+                                    <div class="item-content">
+                                        <div class="item-details">
+                                            <p class="item-title"><%- items.Items[i].name %></p>
+                                            <p class="item-bull">&bull;</p>
+                                            <p class="item-category"><%- items.Items[i].type %></p>
+                                            <p class="item-price"><%- items.Items[i].price %></p>
+                                        </div>
+                                        <div class="item-actions">
+                                            <button class="login-logout item-buy">Add To Cart</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <% } %>
+                        
                             <% } %>
+                             
+                         
+                        
                     </div>
                 </div>
             </section>
@@ -181,6 +194,27 @@
                         }
                     })
                 </script>
+
+                <script>
+
+                    let filter_button = document.querySelector('#filter-button');
+                    
+                    filter_button.addEventListener('click', (e) => {
+                        e.preventDefault();
+
+                        let filter_info = document.querySelector('#filter-form')
+
+                        let formData = new FormData(filter_info);
+                        console.log(formData.get('color'));
+
+                        window.location.assign(`http://localhost:3000/app/filter?color=${formData.get('color').toLowerCase()}&type=${formData.get('type')}`);
+                    })
+
+                </script>
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+                <!-- <dotlottie-player src="https://lottie.host/7a90bda5-f79e-4e48-b8cc-e6542b8387ff/C6sdjhWP4H.json" background="transparent" speed="1" style="width: 100%; height: 500px; border: none;" loop autoplay></dotlottie-player> -->
+
 
     </body>
 
