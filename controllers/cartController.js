@@ -18,6 +18,8 @@ exports.cart_add = async (req, res, next) => {
         if (existingOrderItem) {
           const newQuantity = existingOrderItem.quantity + 1
 
+          console.log(newQuantity)
+
           OrderItem.findOneAndUpdate(
             { _id: existingOrderItem._id },
             { $set: { quantity: newQuantity } }

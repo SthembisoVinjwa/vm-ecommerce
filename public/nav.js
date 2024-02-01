@@ -62,7 +62,7 @@ function updateCart () {
   })
     .then(response =>
       response.json().then(data => {
-        countCircle.innerText = data.cartTotal
+        countCircle.innerText = data.cartTotal ? data.cartTotal : 0
       })
     )
     .catch(err => {
