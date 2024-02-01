@@ -3,6 +3,12 @@
 
 <%- include('./partials/head.ejs') %>
 
+    <head>
+        <script>
+            let server_url = '<%- url %>'
+        </script>
+    </head>
+
     <body>
         <%- include('./partials/header.ejs') %>
             <button id="toggle-filter" class="login-logout">Tap to filter</button>
@@ -184,16 +190,15 @@
                     });
 
                     let filter = document.querySelector('.filter')
-                    console.log(filter)
 
                     document.addEventListener('click', (e) => {
 
                         if (!filter.contains(e.target) && e.target.id !== 'toggle-filter') {
-                            console.log(filter.classList.contains('hide'))
                             filter.classList.add('hide')
                         }
                     })
                 </script>
+                <script src="/shop.js"></script>
 
                 <script>
 

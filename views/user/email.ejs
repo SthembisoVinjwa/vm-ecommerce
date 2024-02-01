@@ -5,6 +5,9 @@
 
     <head>
         <link rel="stylesheet" href="/userStyle.css">
+        <script>
+            let server_url = '<%- url %>'
+        </script>
     </head>
 
     <body>
@@ -20,10 +23,6 @@
             </div>
         </main>
         <%- include('../partials/footer.ejs')%>
-
-        <script>
-            let server_url = '<%- url %>'
-        </script>
 
         <script src="/userScript.js"></script>
     </body>

@@ -5,6 +5,9 @@
 
     <head>
         <link rel="stylesheet" href="/userStyle.css">
+        <script>
+            let server_url = '<%- url %>'
+        </script>
     </head>
 
     <body>
@@ -22,7 +25,6 @@
         <%- include('../partials/footer.ejs')%>
 
         <script>
-            const server_url = '<%- url %>'
             const params = new URLSearchParams(window.location.search);
             const user_email = params.get('email');
         </script>

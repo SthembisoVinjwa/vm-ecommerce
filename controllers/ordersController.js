@@ -9,7 +9,6 @@ exports.order_get_all_orders = (req, res, next) => {
     .populate(['user', 'orderItems'])
     .exec()
     .then(result => {
-      console.log(result)
       res.status(200).json({
         message: 'Orders retrieved successfully',
         numberOfOrders: result.length,

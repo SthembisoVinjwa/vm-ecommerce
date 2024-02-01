@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
         items = response.data
     }
 
-    res.render('index', { items: items })
+    res.render('index', {url: process.env.SERVER_URL, items: items})
 })
 
 router.get('/browse', async (req, res, next) => {

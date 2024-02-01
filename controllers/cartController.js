@@ -1,53 +1,132 @@
 const mongoose = require('mongoose')
 const Cart = require('../models/cart')
-const User = require('../models/users')
 const OrderItem = require('../models/orderItem')
+const Item = require('../models/item')
 
-exports.cart_create = async (req, res, next) => {
+exports.cart_add = async (req, res, next) => {
   const userId = req.userData.userId
   const orderItems = []
+  const updateOps = {}
 
-  const checkCart = await Cart.find()
+  const checkCart = await Cart.findOne({ user: userId })
 
-  if (checkCart.length > 0) {
-    return res.status(403).json({
-        message: 'Cart already exists. Consider updating or deleting current one.'
-    })
-  }
+  if (checkCart) {
+    Item.findById(req.body.itemId)
+      .then(async item => {
+        const existingOrderItem = await OrderItem.findOne({ item: item._id })
 
-  for (let i = 0; i < req.body.orderItems.length; i++) {
-    let orderItem = req.body.orderItems[i]
-    orderItems.push((await OrderItem.findById(orderItem))._id)
-  }
+        if (existingOrderItem) {
+          const newQuantity = existingOrderItem.quantity + 1
 
-  User.findById(userId)
-    .then(user => {
-      const cart = Cart({
-        _id: new mongoose.Types.ObjectId(),
-        user: user._id,
-        orderItems: orderItems
-      })
+          console.log(newQuantity)
 
-      cart
-        .save()
-        .then(result => {
-          res.status(201).json(result)
-        })
-        .catch(err => {
-          res.status(500).json({
-            error: err
+          OrderItem.findOneAndUpdate(
+            { _id: existingOrderItem._id },
+            { $set: { quantity: newQuantity } }
+          )
+            .then(
+              res.status(200).json({
+                message: "One item added to cart"
+              })
+            )
+            .catch(err => {
+              res.status(500).json({
+                error: err
+              })
+            })
+        } else {
+          const orderItem = new OrderItem({
+            _id: new mongoose.Types.ObjectId(),
+            item: item._id,
+            quantity: 1
           })
-        })
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err
+
+          orderItem
+            .save()
+            .then(async savedOrderItem => {
+              const oldCart = await Cart.findOne({ user: req.userData.userId })
+
+              for (let i = 0; i < oldCart.orderItems.length; i++) {
+                orderItems.push(oldCart.orderItems[i]._id)
+              }
+
+              orderItems.push(savedOrderItem._id)
+
+              updateOps['orderItems'] = orderItems
+
+              Cart.findOneAndUpdate(
+                { user: req.userData.userId },
+                { $set: updateOps },
+                { new: true }
+              )
+                .then(cart => {
+                  res.status(200).json(cart)
+                })
+                .catch(err => {
+                  res.status(500).json({
+                    error: err
+                  })
+                })
+            })
+            .catch(err => {
+              res.status(500).json({
+                error: err
+              })
+            })
+        }
       })
-    })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        })
+      })
+  } else {
+    return Item.findById(req.body.itemId)
+      .then(item => {
+        const orderItem = new OrderItem({
+          _id: new mongoose.Types.ObjectId(),
+          item: item._id,
+          quantity: 1
+        })
+
+        orderItem
+          .save()
+          .then(savedOrderItem => {
+            orderItems.push(savedOrderItem._id)
+
+            const cart = Cart({
+              _id: new mongoose.Types.ObjectId(),
+              user: userId,
+              orderItems: orderItems
+            })
+
+            cart
+              .save()
+              .then(result => {
+                res.status(201).json(result)
+              })
+              .catch(err => {
+                res.status(500).json({
+                  error: err
+                })
+              })
+          })
+          .catch(err => {
+            res.status(500).json({
+              error: err
+            })
+          })
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        })
+      })
+  }
 }
 
 exports.cart_get = (req, res, next) => {
-  Cart.find({ user: req.userData.userId })
+  Cart.findOne({ user: req.userData.userId })
     .select('-__v')
     .populate('user')
     .populate('orderItems')
@@ -67,24 +146,27 @@ exports.cart_get = (req, res, next) => {
     })
 }
 
-exports.cart_patch = async (req, res, next) => {
-  const updateOps = {}
-  const orderItems = []
-
-  for (let i = 0; i < req.body.orderItems.length; i++) {
-    let orderItem = req.body.orderItems[i]
-    orderItems.push((await OrderItem.findById(orderItem))._id)
-  }
-
-  updateOps['orderItems'] = orderItems
-
-  Cart.findOneAndUpdate(
-    { user: req.userData.userId },
-    { $set: updateOps },
-    { new: true }
-  )
+exports.cart_get_total = (req, res, next) => {
+  Cart.findOne({ user: req.userData.userId })
+    .select('-__v')
+    .populate('user')
+    .populate('orderItems')
     .then(cart => {
-      res.status(200).json(cart)
+      if (cart) {
+        let count = 0
+
+        for (let i = 0; i < cart.orderItems.length; i++) {
+          count += cart.orderItems[i].quantity
+        }
+
+        return res.status(200).json({
+          cartTotal: count
+        })
+      } else {
+        return res.status(404).json({
+          message: 'Cart not found'
+        })
+      }
     })
     .catch(err => {
       res.status(500).json({
